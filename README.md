@@ -7,12 +7,15 @@ terraform apply --auto-approve
 ```
 
 ## Components
-The terraform template will deploy :
+#### The terraform :  
+The Terraform template will deploy azure resources.
+
 1. <B>ResourceGroup</B> : The Azure ResourceGroup that will host our WebApp.
 2. <B>App Service plan</B> : Our WebApp needs an AppServicePlan to run. Our SKU is premium.
 3. <B>Linux Web App</B> : Our WebApp that will run a pyton application hosted in Dockerhub.
 
-The python script :
+#### The python script :
+
 This Python script is a simple Flask web application that serves as an Azure Web App. 
 1. Flask Setup: It starts by importing the necessary modules from the Flask framework.
 
