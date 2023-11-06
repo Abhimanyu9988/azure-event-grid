@@ -12,7 +12,7 @@ variable "azurerm_resource_group_name" {
 }
 
 variable "web_app_name" {
-    default = "azure-events-web-app"
+    default = "azure-events-web"
     type = string
     description = "The name of the Container Group"
 }

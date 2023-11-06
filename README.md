@@ -47,3 +47,34 @@ It then renders the 'event_data.html' template, passing the event_data as a vari
 az webapp create --name <Name> --resource-group <Resource-group-Name> --plan <App-Service-plan-name> --deployment-container-image-name <Container-image-repo>
 ```
 
+## To create your own custom image
+```bash
+cat Dockerfile <EOF
+# Use the official Python image as the base image
+FROM python:3.9
+
+# Set the working directory in the container
+WORKDIR /app
+RUN mkdir /app/templates
+
+# Copy the Python application into the container
+COPY hello-world-web-app.py .
+
+COPY templates/event_data.html templates/.
+
+# Install Flask and any other dependencies
+RUN pip install flask requests
+
+
+# Expose port 80 for the Flask application
+EXPOSE 80
+
+# Run the Flask application when the container starts
+CMD ["python", "hello-world-web-app.py"]
+EOF>
+
+
+docker build -t azure-event-python-web-app --platform=linux/amd64 .
+docker tag azure-event-python-web-app:latest <Repo_name>/azure-event-python-web-app:latest
+docker push <Repo_name>/azure-event-python-web-app:latest
+```

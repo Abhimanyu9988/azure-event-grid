@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source = "hashicorp/azurerm"
-      version = "3.75.0"
+      version = "3.78.0"
     }
   }
 }
@@ -18,14 +18,6 @@ provider "azurerm" {
 resource "azurerm_resource_group" "resource_group" {
   name     = var.azurerm_resource_group_name
   location = var.location
-}
-
-output "resource_group_name" {
-  value = azurerm_resource_group.resource_group.name
-}
-
-output "resource_group_location" {
-  value = azurerm_resource_group.resource_group.location
 }
 
 
@@ -52,7 +44,7 @@ resource "azurerm_linux_web_app" "linux_webapp" {
 
   site_config {
     application_stack {
-      docker_image_name = " abhimanyubajaj98/azure-event-python-web-app:latest"
+      docker_image_name = "abhimanyubajaj98/azure-event-python-web-app:latest"
       docker_registry_url = "https://index.docker.io"
 
       #To list all the available stacks, run az webapp list-runtimes --linux
@@ -62,4 +54,12 @@ resource "azurerm_linux_web_app" "linux_webapp" {
 
 output "webapp_url" {
   value = "https://${azurerm_linux_web_app.linux_webapp.name}.azurewebsites.net"
+}
+
+output "resource_group_name" {
+  value = azurerm_resource_group.resource_group.name
+}
+
+output "resource_group_location" {
+  value = azurerm_resource_group.resource_group.location
 }
