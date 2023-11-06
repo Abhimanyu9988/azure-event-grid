@@ -67,8 +67,7 @@ event = event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject":
 
 
 ## To create your own custom image
-```bash
-cat Dockerfile <EOF
+```Dockerfile
 # Use the official Python image as the base image
 FROM python:3.9
 
@@ -90,9 +89,9 @@ EXPOSE 80
 
 # Run the Flask application when the container starts
 CMD ["python", "hello-world-web-app.py"]
-EOF>
+```
 
-
+```bash
 docker build -t azure-event-python-web-app --platform=linux/amd64 .
 docker tag azure-event-python-web-app:latest <Repo_name>/azure-event-python-web-app:latest
 docker push <Repo_name>/azure-event-python-web-app:latest
