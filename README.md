@@ -29,8 +29,9 @@ This Python script is a simple Flask web application that serves as an Azure Web
 
 6. Routes:
 
-6.a. The @app.route('/') decorator defines a route for the root URL ('/'). When accessed, it returns the text "Hello, Azure Web App!".
-6.b. The @app.route('/event_data', methods=['GET', 'POST']) decorator defines a route for '/event_data'. This route handles both GET and POST requests.
+   6.a. The @app.route('/') decorator defines a route for the root URL ('/'). When accessed, it returns the text "Hello, Azure Web App!".
+   
+   6.b. The @app.route('/event_data', methods=['GET', 'POST']) decorator defines a route for '/event_data'. This route handles both GET and POST requests.
 
 7. view_event_data Function:
 
