@@ -1,3 +1,16 @@
+## Overview
+This guide provides step-by-step instructions for deploying an Azure Web App with Azure Event Grid. We'll use Terraform to set up Azure resources and create a simple Flask web application that serves as the Web App. The web app is designed to receive custom events sent to it through Azure Event Grid.
+
+
+## Prerequisites
+Before you begin, ensure you have the following prerequisites:
+
+An Azure subscription
+Terraform installed on your local machine
+Docker installed on your local machine
+Azure CLI installed on your local machine
+
+
 ## Usage
 ```
 git clone
@@ -47,6 +60,11 @@ It then renders the 'event_data.html' template, passing the event_data as a vari
 ``` bash
 az webapp create --name <Name> --resource-group <Resource-group-Name> --plan <App-Service-plan-name> --deployment-container-image-name <Container-image-repo>
 ```
+#### event.json
+```bash
+event = event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/vehicles/motorcycles", "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'", "data":{ "make": "Contoso", "model": "Monster"},"dataVersion": "1.0"} ]'
+```
+
 
 ## To create your own custom image
 ```bash
